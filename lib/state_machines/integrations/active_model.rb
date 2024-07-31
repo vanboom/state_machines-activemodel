@@ -498,7 +498,7 @@ module StateMachines
       # Configures new states with the built-in humanize scheme
       def add_states(*)
         super.each do |new_state|
-          new_state.human_name = ->(state, klass) { translate(klass, :state, state.name) }
+          new_state.human_name ||= ->(state, klass) { translate(klass, :state, state.name) }
         end
       end
 
